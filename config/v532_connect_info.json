@@ -1,0 +1,30 @@
+{
+  "PRD" : {
+    "nudge_admin_maria_db" : {
+      "HOST" : "121.125.71.189",
+      "PORT" : 3306,
+      "DB_NAME" : "nudge_admin",
+      "USER" : "nudge_admin",
+      "PASSWORD" : "admin!#189"
+    },
+    "POLICY_ELASTIC" : {
+      "POLICY" : ["121.125.71.151","121.125.71.152","121.125.71.153","121.125.71.154","121.125.71.155"],
+      "PORT" : 9200,
+      "USER" : "elastic",
+      "PASSWORD" : "X7XsyxLzbrFDFMyOy3Wd"
+    }
+  },
+  "STG" : {
+    "nudge_admin_maria_db" : {
+      "HOST" : "1.255.144.64",
+      "PORT" : 3306,
+      "DB_NAME" : "nudge",
+      "USER" : "nudge_1",
+      "PASSWORD" : "0000"
+    },
+    "POLICY_ELASTIC" : {
+      "POLICY" : ["1.255.145.176","1.255.145.177","1.255.145.178"],
+      "PORT" : 9200
+    }
+  }
+}
