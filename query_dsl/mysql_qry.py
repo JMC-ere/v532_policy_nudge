@@ -102,7 +102,12 @@ from (
    left outer join nudge_common.nudge_text nt on s.text_id  = nt.text_id 
    where  1=1
 		and (
-			date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			(
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
@@ -161,8 +166,12 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
         ,file_saved_name
         from nudge_v532.slot  s
         where 
-             -- date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') between s.start_dt and ifnull(s.end_dt, s.start_dt)
-            date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+             (
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
@@ -186,8 +195,12 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
          slot_id
         from nudge_v532.slot s
         where 
-           --date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') between s.start_dt and ifnull(s.end_dt, s.start_dt)
-           date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+           (
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
@@ -213,8 +226,12 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
          slot_id
         from nudge_v532.slot s
         where 
-          -- date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') between s.start_dt and ifnull(s.end_dt, s.start_dt)
-          date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+          (
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
@@ -342,8 +359,12 @@ from (
    left outer join nudge_common.nudge_text nt on s.text_id  = nt.text_id 
    where  1=1
 		and (
-		    (date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt) or
-		    s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and ifnull(s.end_dt, s.start_dt))
+			(
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
@@ -402,8 +423,12 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
         ,file_saved_name
         from nudge_v532.slot  s
         where 
-			(date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt) or
-		    s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and ifnull(s.end_dt, s.start_dt))
+             (
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
@@ -427,13 +452,17 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
          slot_id
         from nudge_v532.slot s
         where 
-            (date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt) or
-		    s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and ifnull(s.end_dt, s.start_dt))
+           (
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
 				and	date_format(adddate(now(), {day}), '%Y%m%d') =  DATE_FORMAT(STR_TO_DATE(s.start_dt, '%Y%m%d%H%i%s'), '%Y%m%d')
-			)           
+			)
         )
         """,
         "INSERT_SLOT_MODEL_HIST": """
@@ -442,6 +471,7 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
         ,slot_id
         ,stb_type
         )
+
         select
         date_format(adddate(now(), {day}), '%Y%m%d')
         ,slot_id
@@ -453,13 +483,17 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
          slot_id
         from nudge_v532.slot s
         where 
-            (date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt) or
-		    s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and ifnull(s.end_dt, s.start_dt)) 
+          (
+			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
+			    or 
+			    (s.start_dt between date_format(adddate(now(), {day}), '%Y%m%d000000') and date_format(adddate(now(), {day}), '%Y%m%d235959')
+			    and date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') < ifnull(s.end_dt, s.start_dt) )
+			)
 			or (
 				-- 특정채널 넛지 처리
 				s.nudge_id = '14'
 				and	date_format(adddate(now(), {day}), '%Y%m%d') =  DATE_FORMAT(STR_TO_DATE(s.start_dt, '%Y%m%d%H%i%s'), '%Y%m%d')
-			)     
+			)
         )
         """,
         "DELETE_SLOT_HIST": """
