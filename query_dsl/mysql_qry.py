@@ -11,7 +11,7 @@ select
    ,sugg.`type`
    ,sm.model stb_model
    ,expo.btn_type ui_type
-   ,date_format(adddate(now(), 0), '%Y%m%d%H%i%s') nudge_date
+   ,date_format(adddate(now(), {day}), '%Y%m%d%H%i%s') nudge_date
    ,date_format(adddate(now(), {day}), '%Y.%m.%d') log_time
    ,'v532' stb_ver
    , case 
