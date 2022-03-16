@@ -165,7 +165,8 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
         ,file_name
         ,file_saved_name
         from nudge_v532.slot  s
-        where 
+        where 1=1
+            and
              (
 			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
 			    or 
@@ -194,7 +195,7 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
         select
          slot_id
         from nudge_v532.slot s
-        where 
+        where 1=1
            (
 			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
 			    or 
@@ -225,7 +226,8 @@ left outer join nudge_common.stb_model sm on ndata.stb_group = sm.stb_type
         select
          slot_id
         from nudge_v532.slot s
-        where 
+        where 1=1
+            and 
           (
 			    date_format(adddate(now(), {day}), '%Y%m%d000000') between s.start_dt and ifnull(s.end_dt, s.start_dt)
 			    or 
